@@ -48,6 +48,11 @@ end
 IO.puts f.(2,3,4)
 IO.puts f.(4,5,-9.8)
 g.(4, 7) |> inspect |> IO.puts # TODO why does this print '\b\f'
+# EDIT: Jose Valim actually clarified this mystery here 
+# https://forums.pragprog.com/forums/322/topics/Exercise:%20Functions-1
+# :)
+
+
 g.(400, 7) |> inspect |> IO.puts
 [4,5,63333] |> inspect |> IO.puts
 
