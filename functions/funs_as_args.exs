@@ -20,3 +20,20 @@ IO.puts "Adder returned #{adder.(10, 12)}"
 len = &length(&1)
 li = [1,2,3,4]
 "The length of li is #{len.(li)}" |> IO.puts
+
+# this is a suboptiomal soln....see below
+res = Enum.map [1,3,6,9,7,10,12], &(rem(&1, 3) == 0) 
+res |> inspect |> IO.puts
+
+# CAUTION: Without parantheses this prints each on a new line!
+Enum.map [1,3,6,9,7,10,12], &(rem(&1, 3) == 0)  |> inspect |> IO.puts
+
+# This is what we want
+(Enum.map [1,3,6,9,7,10,12], &(rem(&1, 3) == 0))  |> inspect |> IO.puts
+
+# This...
+Enum.each [1,2,3,4,5,60], fn x -> IO.inspect x end
+# can be rewritten as...
+Enum.each [1,2,3,4,5,60], &(IO.inspect &1)
+# or as this...
+Enum.each [1,2,3,4,5,60], &IO.inspect/1
